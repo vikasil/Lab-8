@@ -13,7 +13,7 @@ def task2():
         ret, image = cap.read()
         if not ret:
             break
-        mask = cv2.inRange(image, (80,80,80), (255,255,255))
+        mask = cv2.inRange(image, (80, 80, 80), (255, 255, 255))
         ret, thresh = cv2.threshold(mask, 110, 255, cv2.THRESH_BINARY_INV)
         contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         if len(contours) > 0:
@@ -32,7 +32,7 @@ def task3():
         ret, image = cap.read()
         if not ret:
             break
-        mask=cv2.inRange(image, (80,80,80), (255,255,255))
+        mask=cv2.inRange(image, (80, 80, 80), (255, 255, 255))
         ret, thresh = cv2.threshold(mask, 110, 255, cv2.THRESH_BINARY_INV)
         contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         if len(contours) > 0:
