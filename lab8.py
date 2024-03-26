@@ -1,5 +1,5 @@
 import cv2
-def F1():
+def task1():
     image = cv2.imread("images/variant-6.png")
     image_X2 = cv2.resize(image, None, fx=2, fy=2)
     while (cv2.waitKey(1) != 27):#выход по кнопке Esc
@@ -7,7 +7,7 @@ def F1():
         cv2.imshow("image_X2", image_X2) 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-def F2():
+def task2():
     cap = cv2.VideoCapture("sample.mp4")
     while (cv2.waitKey(1) != 27):
         ret, image = cap.read()
@@ -23,7 +23,7 @@ def F2():
         cv2.imshow("image", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-def F3():
+def task3():
     OLDposition = 2
     Left = 0
     Right = 0
@@ -55,7 +55,7 @@ def F3():
         cv2.imshow("image", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-def Fdop():
+def additional_task():
     OLDposition = 2
     Left = 0
     Right = 0
@@ -102,11 +102,12 @@ def Fdop():
             OLDposition=NEWposition
         cv2.putText(image,  str(Left), (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
         cv2.putText(image,  str(Right), (500, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
-        cv2.imshow("mask", mask)
+        #cv2.imshow("mask", mask)
         cv2.imshow("image", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-F1()
-F2()
-F3()
-Fdop()
+if __name__ == '__main__':
+    task1()
+    task2()
+    task3()
+    additional_task()
