@@ -127,7 +127,7 @@ def additional_task():
     cv2.destroyAllWindows()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     task1()
     task2()
     task3()
