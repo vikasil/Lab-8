@@ -1,4 +1,6 @@
 import cv2
+
+
 def task1():
     image = cv2.imread("images/variant-6.png")
     image_X2 = cv2.resize(image, None, fx=2, fy=2)
@@ -7,6 +9,8 @@ def task1():
         cv2.imshow("image_X2", image_X2) 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
 def task2():
     cap = cv2.VideoCapture("sample.mp4")
     while (cv2.waitKey(1) != 27):
@@ -15,7 +19,8 @@ def task2():
             break
         mask = cv2.inRange(image, (80, 80, 80), (255, 255, 255))
         ret, thresh = cv2.threshold(mask, 110, 255, cv2.THRESH_BINARY_INV)
-        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        contours, hierarchy = cv2.findContours(thresh,
+                                                cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         if len(contours) > 0:
             c = max(contours, key=cv2.contourArea)
             x, y, w, h = cv2.boundingRect(c)
@@ -23,6 +28,8 @@ def task2():
         cv2.imshow("image", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
 def task3():
     OLDposition = 2
     Left = 0
@@ -34,7 +41,8 @@ def task3():
             break
         mask=cv2.inRange(image, (80, 80, 80), (255, 255, 255))
         ret, thresh = cv2.threshold(mask, 110, 255, cv2.THRESH_BINARY_INV)
-        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        contours, hierarchy = cv2.findContours(thresh,
+                                                cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         if len(contours) > 0:
             c = max(contours, key=cv2.contourArea)
             x, y, w, h = cv2.boundingRect(c)
@@ -50,11 +58,15 @@ def task3():
             if OLDposition == 1:
                 Right += 1
             OLDposition = NEWposition
-        cv2.putText(image,  str(Left), (100,100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-        cv2.putText(image,  str(Right), (500,100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        cv2.putText(image,  str(Left), (100,100),
+                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+        cv2.putText(image,  str(Right), (500,100),
+                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
         cv2.imshow("image", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
 def additional_task():
     OLDposition = 2
     Left = 0
@@ -66,7 +78,8 @@ def additional_task():
             break
         mask=cv2.inRange(image, (80, 80, 80), (255, 255, 255))
         ret, thresh = cv2.threshold(mask, 110, 255, cv2.THRESH_BINARY_INV)
-        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        contours, hierarchy = cv2.findContours(thresh,
+                                                cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         if len(contours) > 0:
             c = max(contours, key=cv2.contourArea)
             x, y, w, h = cv2.boundingRect(c)
@@ -100,12 +113,16 @@ def additional_task():
             if OLDposition == 1:
                 Right += 1
             OLDposition=NEWposition
-        cv2.putText(image,  str(Left), (100, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
-        cv2.putText(image,  str(Right), (500, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
+        cv2.putText(image,  str(Left), (100, 100),
+                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
+        cv2.putText(image,  str(Right), (500, 100),
+                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
         #cv2.imshow("mask", mask)
         cv2.imshow("image", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+
+
 if __name__ == '__main__':
     task1()
     task2()
