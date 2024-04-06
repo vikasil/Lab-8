@@ -1,5 +1,9 @@
 import cv2
 
+OLDposition = 2
+Left = 0
+Right = 0
+
 
 def task1():
     image = cv2.imread("images/variant-6.png")
@@ -31,37 +35,37 @@ def task2():
 
 
 def task3():
-    OLDposition = 2
-    Left = 0
-    Right = 0
+    global OLDposition
+    global Left
+    global Right
     cap = cv2.VideoCapture("sample.mp4")
     while cv2.waitKey(1) != 27:
         ret, image = cap.read()
         if not ret:
             break
-        mask=cv2.inRange(image,(80,80,80),(255,255,255))
+        mask=cv2.inRange(image, (80,80,80), (255,255,255))
         ret, thresh = cv2.threshold(mask, 110, 255, cv2.THRESH_BINARY_INV)
         contours, hierarchy = cv2.findContours(thresh,
                                                cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
         if len(contours) > 0:
             c = max(contours, key=cv2.contourArea)
             x, y, w, h = cv2.boundingRect(c)
-            cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
-        centreX = image.shape[1]//2
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        centreX = image.shape[1] // 2
         if x>(centreX):
             NEWposition = 2
         if x+w<(centreX):
             NEWposition = 1
         if NEWposition != OLDposition:
             if OLDposition == 2:
-                Left+=1
+                Left += 1
             if OLDposition == 1:
-                Right+=1
+                Right += 1
             OLDposition=NEWposition
         cv2.putText(image,  str(Left), (100,100),
-                    cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
         cv2.putText(image,  str(Right), (500,100),
-                    cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
         cv2.imshow("image",image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
@@ -83,7 +87,7 @@ def additional_task():
         if len(contours) > 0:
             c = max(contours, key=cv2.contourArea)
             x, y, w, h = cv2.boundingRect(c)
-            cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
         a = x + (w // 2)
         b = y + (h // 2)
         #print(a, b)
