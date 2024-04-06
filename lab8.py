@@ -52,9 +52,9 @@ def task3():
             x, y, w, h = cv2.boundingRect(c)
             cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
         centre_x = image.shape[1] // 2
-        if x>(centre_x):
+        if x > (centre_x):
             new_position = 2
-        if x+w<(centre_x):
+        if x + w < (centre_x):
             new_position = 1
         if new_position != old_position:
             if old_position == 2:
@@ -107,9 +107,9 @@ def additional_task():
                     dy = image.shape[0] - 1
                 image[dy][dx] = fly[j][i]
         centre_x = image.shape[1] // 2
-        if x>(centre_x):
+        if x > (centre_x):
             new_position = 2
-        if x+w<(centre_x):
+        if x + w < (centre_x):
             new_position = 1
         if new_position != old_position:
             if old_position == 2:
