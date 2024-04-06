@@ -1,8 +1,8 @@
 import cv2
 
-OLDposition = 2
-Left = 0
-Right = 0
+old_position = 2
+left = 0
+right = 0
 
 
 def task1():
@@ -35,9 +35,9 @@ def task2():
 
 
 def task3():
-    global OLDposition
-    global Left
-    global Right
+    global old_position
+    global left
+    global right
     cap = cv2.VideoCapture("sample.mp4")
     while cv2.waitKey(1) != 27:
         ret, image = cap.read()
@@ -51,20 +51,20 @@ def task3():
             c = max(contours, key=cv2.contourArea)
             x, y, w, h = cv2.boundingRect(c)
             cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        centreX = image.shape[1] // 2
-        if x>(centreX):
-            NEWposition = 2
-        if x+w<(centreX):
-            NEWposition = 1
-        if NEWposition != OLDposition:
-            if OLDposition == 2:
-                Left += 1
-            if OLDposition == 1:
-                Right += 1
-            OLDposition=NEWposition
-        cv2.putText(image,  str(Left), (100,100),
+        centre_x = image.shape[1] // 2
+        if x>(centre_x):
+            new_position = 2
+        if x+w<(centre_x):
+            new_position = 1
+        if new_position != old_position:
+            if old_position == 2:
+                left += 1
+            if old_position == 1:
+                right += 1
+            old_position=new_position
+        cv2.putText(image,  str(left), (100,100),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-        cv2.putText(image,  str(Right), (500,100),
+        cv2.putText(image,  str(right), (500,100),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
         cv2.imshow("image",image)
     cv2.waitKey(0)
@@ -72,9 +72,9 @@ def task3():
 
 
 def additional_task():
-    OLDposition = 2
-    Left = 0
-    Right = 0
+    old_position = 2
+    left = 0
+    right = 0
     cap = cv2.VideoCapture("sample.mp4")
     while cv2.waitKey(1) != 27:
         ret, image = cap.read()
@@ -92,7 +92,7 @@ def additional_task():
         b = y + (h // 2)
         #print(a, b)
         fly = cv2.imread("fly64.png")
-        fly = cv2.resize(fly,(64,64))
+        fly = cv2.resize(fly, (64,64))
         for i in range(64):
             for j in range(64):
                 dx = (a - 32 + j)
@@ -106,20 +106,20 @@ def additional_task():
                 if dy > image.shape[0] - 1:
                     dy = image.shape[0] - 1
                 image[dy][dx] = fly[j][i]
-        centreX = image.shape[1]//2
-        if x>(centreX):
-            NEWposition = 2
-        if x+w<(centreX):
-            NEWposition = 1
-        if NEWposition != OLDposition:
-            if OLDposition == 2:
-                Left += 1
-            if OLDposition == 1:
-                Right += 1
-            OLDposition=NEWposition
-        cv2.putText(image,  str(Left), (100, 100),
+        centre_x = image.shape[1] // 2
+        if x>(centre_x):
+            new_position = 2
+        if x+w<(centre_x):
+            new_position = 1
+        if new_position != old_position:
+            if old_position == 2:
+                left += 1
+            if old_position == 1:
+                right += 1
+            old_position=new_position
+        cv2.putText(image,  str(left), (100, 100),
                      cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
-        cv2.putText(image,  str(Right), (500, 100),
+        cv2.putText(image,  str(right), (500, 100),
                      cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
         #cv2.imshow("mask", mask)
         cv2.imshow("image", image)
