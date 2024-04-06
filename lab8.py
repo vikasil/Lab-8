@@ -43,7 +43,7 @@ def task3():
         ret, image = cap.read()
         if not ret:
             break
-        mask=cv2.inRange(image, (80,80,80), (255,255,255))
+        mask = cv2.inRange(image, (80,80,80), (255,255,255))
         ret, thresh = cv2.threshold(mask, 110, 255, cv2.THRESH_BINARY_INV)
         contours, hierarchy = cv2.findContours(thresh,
                                                cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
@@ -61,12 +61,12 @@ def task3():
                 left += 1
             if old_position == 1:
                 right += 1
-            old_position=new_position
+            old_position = new_position
         cv2.putText(image,  str(left), (100,100),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
         cv2.putText(image,  str(right), (500,100),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-        cv2.imshow("image",image)
+        cv2.imshow("image", image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
@@ -80,7 +80,7 @@ def additional_task():
         ret, image = cap.read()
         if not ret:
             break
-        mask=cv2.inRange(image, (80, 80, 80), (255, 255, 255))
+        mask = cv2.inRange(image, (80, 80, 80), (255, 255, 255))
         ret, thresh = cv2.threshold(mask, 110, 255, cv2.THRESH_BINARY_INV)
         contours, hierarchy = cv2.findContours(thresh,
                                                 cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
@@ -116,7 +116,7 @@ def additional_task():
                 left += 1
             if old_position == 1:
                 right += 1
-            old_position=new_position
+            old_position = new_position
         cv2.putText(image,  str(left), (100, 100),
                      cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0) , 2)
         cv2.putText(image,  str(right), (500, 100),
